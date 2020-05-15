@@ -1,5 +1,3 @@
-# #split code into at least two documents: one for main dishes one for sides
-
 # # basic objectives
 #   #the user chooses from a list of main dishes
 
@@ -10,35 +8,46 @@
 #   # computer totals lunch items and displays total
 
 
-require_relative 'main.rb' 
+require_relative 'main.rb'
 require_relative 'side.rb'
 
 class LunchLady
+  # attr_accessor :name, :price
 
-  def initialize
+  def initialize(name, price)
+    # @name = name
+    # @price = price
+
     @main_dishes = [
     MainDish.new('Nacho', 4),
     MainDish.new('Hamburger', 6),
-    MainDish.new('Hot Dog', 8),
+    MainDish.new('Hot Dog', 8)
     ]
        
     @side_dishes = [
-      SideDish.new('fries', '2'),
-      SideDish.new('sweet potato fries', '4'),
-      SideDish.new('pickle', '6')
+      SideDish.new('fries', 2),
+      SideDish.new('sweet potato fries', 4),
+      SideDish.new('pickle', 6)
     ]
     @cart = []
-    @wallet = {}
+    @default_wallet = {}
+    @current_wallet = @default_wallet
   end
-# # get_user
-#     # main_menu
-#   end
-  
+
+# @wallet = gets.strip
+# if @wallet.match(/^\d+$/)
+#     puts "\nThank you!"
+#     #call menu options
+#     main_dish_menu
+
   def get_user
-    # welcome
-    #  get user name
-    # @user_name
-    # get user wallet amount
+    print "welcome!"
+    print " What is your name? "
+    @user_name = gets.strip.capitalize
+    puts "\nwhat is your budget for lunch today?"
+    print "insert amount here: "
+    @current_wallet = gets.strip.to_i 
+    # main_menu
   end
 
   def main_menu
@@ -46,7 +55,7 @@ class LunchLady
     puts " 1) Choose Main Dish"
     puts " 2) Choose Side Dishes"
     puts " 3) Exit"
-    puts 
+    puts " "
     print "> "
     case gets.strip
      when "1"
@@ -70,6 +79,13 @@ class LunchLady
     gets
   end
 
+  def second_course
+    @side_dishes.each_with_index do |side, index|
+      puts "#{index + 1}) #{main.name} - #{main.price}"
+    end
+    puts "Which two would you like?"
+    gets
+  end
 
 end
 

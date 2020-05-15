@@ -1,13 +1,4 @@
-# require lunch_lady
 
-# # basic objectives
-#   #the user chooses from a list of main dishes
-
-#   # the user chooses 2 side dish items
-
-#   # computer repeats users order
-
-#   # computer totals lunch items and displays total
 
 #   class Main_Dishes
 #     def initialize(name, price)
@@ -37,6 +28,11 @@
 
 # # call the class method on your class.
 #   Main_Dishes.about
+
+
+# case @main_dish_choice = gets.chomp.capitalize
+
+#puts " These were your options #{@main_dish_choice} #{@side_dish_choice} #{@treats_choice}" #interpolation
 
 
 class MainDish
